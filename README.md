@@ -1,1 +1,2 @@
-# letsnote_android
+# Let's note Android App
+
