@@ -6,9 +6,9 @@ package tekmob.letsnote.events;
 public class CreateNoteResultEvent extends BaseEvent {
     private String string;
 
-    public CreateNoteResultEvent(boolean success, String dummyModel) {
+    public CreateNoteResultEvent(boolean success, String string) {
         status = success ? OK : FAIL;
-        this.string = dummyModel;
+        this.string = string;
     }
 
     public String getString() {

@@ -1,8 +1,10 @@
 package tekmob.letsnote.network.services;
 
 import android.content.Context;
+import android.util.Log;
 
 import retrofit.Callback;
+import retrofit.RestAdapter;
 import tekmob.letsnote.models.NotesModel;
 import tekmob.letsnote.network.LNClient;
 import tekmob.letsnote.network.interfaces.INotes;
@@ -12,7 +14,8 @@ import tekmob.letsnote.network.interfaces.INotes;
  */
 public class NotesService {
     public static void createNotes(NotesModel notesModel, Callback<String> callback, Context context) {
+        Log.d("on service", "createnotes");
         INotes notes = LNClient.getClient().getRestAdapter().create(INotes.class);
-        notes.postNotes(notesModel, callback);
+        notes.postNotes(notesModel.getImage(), notesModel.getName(), callback);
     }
 }

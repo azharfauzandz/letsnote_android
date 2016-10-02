@@ -5,6 +5,7 @@ import android.util.Log;
 
 import de.greenrobot.event.EventBus;
 import retrofit.Callback;
+import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tekmob.letsnote.events.CreateNoteEvent;
@@ -28,15 +29,18 @@ public class NotesManager {
     }
 
     public void onEvent(CreateNoteEvent event) {
-        Log.d("post", "create note event");
+        Log.d("on manager", "create note event");
         Callback<String> callback = new Callback<String>() {
             @Override
             public void success(String string, Response response) {
+                Log.d("callback", "success");
                 eventBus.post(new CreateNoteResultEvent(true, response.toString()));
             }
 
             @Override
             public void failure(RetrofitError error) {
+                Log.d("callback", "fail");
+                Log.d("error", error.toString());
                 eventBus.post(new CreateNoteResultEvent(false, "no"));
             }
         };
