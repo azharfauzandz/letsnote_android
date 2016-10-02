@@ -37,7 +37,7 @@ public class NotesManager {
 
             @Override
             public void failure(RetrofitError error) {
-                eventBus.post(new GetDummyResultEvent(false, "no"));
+                eventBus.post(new CreateNoteResultEvent(false, "no"));
             }
         };
         NotesService.createNotes(new NotesModel(event), callback, context);
