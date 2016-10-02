@@ -1,5 +1,6 @@
 package tekmob.letsnote.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,8 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.button)
     public void buttonClick() {
-        Log.d("button", "pressed");
-        eventBus.post(new GetDummyEvent());
+        Intent intent = new Intent(this, CreateNoteActivity.class);
+        startActivity(intent);
     }
 
     public void onEvent(GetDummyResultEvent event) {
