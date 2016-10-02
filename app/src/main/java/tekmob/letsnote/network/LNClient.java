@@ -15,7 +15,7 @@ public class LNClient {
     private LNClient() {
         OkHttpClient okHttpClient = new OkHttpClient();
         restAdapter = new RestAdapter.Builder()
-                .setEndpoint("insert API URL here")
+                .setEndpoint("http://headers.jsontest.com")
                 .setClient(new OkClient(okHttpClient))
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
