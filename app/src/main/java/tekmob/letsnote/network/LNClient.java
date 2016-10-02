@@ -15,7 +15,7 @@ public class LNClient {
     private LNClient() {
         OkHttpClient okHttpClient = new OkHttpClient();
         restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://headers.jsontest.com")
+                .setEndpoint("http://ec2-52-207-209-250.compute-1.amazonaws.com/letsnote")
                 .setClient(new OkClient(okHttpClient))
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
