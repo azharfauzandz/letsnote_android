@@ -28,10 +28,15 @@ import tekmob.letsnote.events.GetDummyEvent;
 
 public class CreateNoteActivity extends BaseActivity {
 
-    @Bind(R.id.testview)
-    TextView testview;
-    @Bind(R.id.name)
-    EditText name;
+    @Bind(R.id.title)
+    EditText title;
+    @Bind(R.id.description)
+    EditText description;
+    @Bind(R.id.price)
+    EditText price;
+
+    //temporary until login is implemented
+    String idUserTemp = "3";
 
     Bitmap uploadImage;
 
@@ -53,14 +58,15 @@ public class CreateNoteActivity extends BaseActivity {
     @OnClick(R.id.submit_notes)
     public void submit() {
         showDialog();
-        String nameString = name.getText().toString();
-        Log.d("name", nameString);
+        String titleString = title.getText().toString();
+        String descriptionString = description.getText().toString();
+        String priceString = price.getText().toString();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         uploadImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte b [] = baos.toByteArray();
         String base64String = Base64.encodeToString(b, Base64.DEFAULT);
         Log.d("posting", "createnoteevent");
-        eventBus.post(new CreateNoteEvent(base64String, nameString));
+        eventBus.post(new CreateNoteEvent(idUserTemp, titleString, descriptionString, priceString, base64String));
     }
 
     @Override
@@ -72,7 +78,6 @@ public class CreateNoteActivity extends BaseActivity {
     }
 
     private void onSelectFromGalleryResult(Intent data, int requestCode) {
-//        Bitmap bm = null;
         if (data != null) {
             try {
                 uploadImage = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
