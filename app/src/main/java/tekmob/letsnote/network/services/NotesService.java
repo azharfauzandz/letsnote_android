@@ -16,6 +16,6 @@ public class NotesService {
     public static void createNotes(NotesModel notesModel, Callback<String> callback, Context context) {
         Log.d("on service", "createnotes");
         INotes notes = LNClient.getClient().getRestAdapter().create(INotes.class);
-        notes.postNotes(notesModel.getImage(), notesModel.getName(), callback);
+        notes.postNotes(notesModel.getIdUsers(), notesModel.getTitle(), notesModel.getDescription(), notesModel.getPrice(), notesModel.getImage(), callback);
     }
 }

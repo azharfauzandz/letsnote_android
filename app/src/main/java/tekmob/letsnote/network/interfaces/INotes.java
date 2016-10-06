@@ -15,8 +15,11 @@ public interface INotes {
     @Multipart
     @POST("/upload.php")
     void postNotes(
+            @Part("id_users") String idUsers,
+            @Part("title") String title,
+            @Part("description") String description,
+            @Part("price") String price,
             @Part("image") String image,
-            @Part("name") String name,
             Callback<String> callback
     );
 }
