@@ -6,6 +6,7 @@ import retrofit.http.Multipart;
 import retrofit.http.POST;
 import retrofit.http.Part;
 import tekmob.letsnote.models.NotesModel;
+import tekmob.letsnote.models.ResponseModel;
 
 /**
  * Created by feaza on 10/2/2016.
@@ -20,6 +21,6 @@ public interface INotes {
             @Part("description") String description,
             @Part("price") String price,
             @Part("image") String image,
-            Callback<String> callback
+            Callback<ResponseModel> callback
     );
 }
