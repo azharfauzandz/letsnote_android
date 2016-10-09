@@ -22,15 +22,6 @@ public class GetNotesResultModel {
     @SerializedName("photo_link")
     String photoLink;
 
-    public GetNotesResultModel(GetNotesResultEvent event) {
-        this.idNotes = event.getIdNotes();
-        this.idUsers = event.getIdUsers();
-        this.title = event.getTitle();
-        this.description = event.getDescription();
-        this.price = event.getPrice();
-        this.photoLink = event.getPhotoLink();
-    }
-
     public String getIdNotes() {
         return idNotes;
     }

@@ -1,47 +1,25 @@
 package tekmob.letsnote.events;
 
+import tekmob.letsnote.models.GetNotesResultModel;
+
 /**
  * Created by feaza on 10/9/2016.
  */
 
 public class GetNotesResultEvent extends BaseEvent {
-    private final String idNotes;
-    private final String idUsers;
-    private final String title;
-    private final String description;
-    private final String price;
-    private final String photoLink;
+    private GetNotesResultModel getNotesResultModel;
 
-    public GetNotesResultEvent(String idNotes, String idUsers, String title, String description, String price, String photoLink) {
-        this.idNotes = idNotes;
-        this.idUsers = idUsers;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.photoLink = photoLink;
+    public GetNotesResultEvent(boolean success, GetNotesResultModel getNotesResultModel) {
+        status = success ? OK : FAIL;
+        this.getNotesResultModel =  getNotesResultModel;
     }
 
-    public String getIdNotes() {
-        return idNotes;
+    public GetNotesResultEvent(boolean success, String message) {
+        status = success ? OK :FAIL;
+        this.message = message;
     }
 
-    public String getIdUsers() {
-        return idUsers;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public String getPhotoLink() {
-        return photoLink;
+    public GetNotesResultModel getGetNotesResultModel() {
+        return getNotesResultModel;
     }
 }
