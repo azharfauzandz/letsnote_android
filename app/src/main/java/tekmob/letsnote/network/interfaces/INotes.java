@@ -14,7 +14,7 @@ import tekmob.letsnote.models.ResponseModel;
 public interface INotes {
 
     @Multipart
-    @POST("/upload.php")
+    @POST("/createNotes.php")
     void postNotes(
             @Part("id_users") String idUsers,
             @Part("title") String title,
