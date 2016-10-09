@@ -5,6 +5,7 @@ import retrofit.http.Body;
 import retrofit.http.Multipart;
 import retrofit.http.POST;
 import retrofit.http.Part;
+import tekmob.letsnote.models.GetNotesResultModel;
 import tekmob.letsnote.models.NotesModel;
 import tekmob.letsnote.models.ResponseModel;
 
@@ -23,4 +24,8 @@ public interface INotes {
             @Part("image") String image,
             Callback<ResponseModel> callback
     );
+
+    @Multipart
+    @POST("/getDetail.php")
+    void getDetail(@Part("id_notes") String idNotes, Callback<GetNotesResultModel> callback);
 }

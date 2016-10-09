@@ -12,7 +12,10 @@ import tekmob.letsnote.events.CreateNoteEvent;
 import tekmob.letsnote.events.CreateNoteResultEvent;
 import tekmob.letsnote.events.GetDummyEvent;
 import tekmob.letsnote.events.GetDummyResultEvent;
+import tekmob.letsnote.events.GetNotesEvent;
 import tekmob.letsnote.models.DummyModel;
+import tekmob.letsnote.models.GetNotesModel;
+import tekmob.letsnote.models.GetNotesResultModel;
 import tekmob.letsnote.models.NotesModel;
 import tekmob.letsnote.models.ResponseModel;
 import tekmob.letsnote.network.services.DummyService;
@@ -46,5 +49,21 @@ public class NotesManager {
             }
         };
         NotesService.createNotes(new NotesModel(event), callback, context);
+    }
+
+    public void onEvent(GetNotesEvent event) {
+        Log.d("on manager", "getnotes");
+        Callback<GetNotesResultModel> callback = new Callback<GetNotesResultModel>() {
+            @Override
+            public void success(GetNotesResultModel getNotesResultModel, Response response) {
+                Log.d("callback", "get notes success");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("callback", "get notes failed");
+            }
+        };
+        NotesService.getNotes(new GetNotesModel(event), callback, context);
     }
 }
