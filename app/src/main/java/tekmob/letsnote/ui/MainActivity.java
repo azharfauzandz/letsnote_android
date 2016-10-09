@@ -28,6 +28,12 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.button_2)
+    public void buttonClick2() {
+        Intent intent = new Intent(this, NotesDetailActivity.class);
+        startActivity(intent);
+    }
+
     public void onEvent(GetDummyResultEvent event) {
         String test = event.getDummyModel().getHost();
         Toast.makeText(MainActivity.this, test, Toast.LENGTH_SHORT).show();

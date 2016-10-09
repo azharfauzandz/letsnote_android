@@ -24,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.CreateNoteActivity"></activity>
-        <activity android:name=".ui.RegisterActivity"></activity>
+        <activity android:name=".ui.CreateNoteActivity" />
+        <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".ui.NotesDetailActivity"></activity>
     </application>
 
 </manifest>
