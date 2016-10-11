@@ -9,15 +9,26 @@ import tekmob.letsnote.events.GetNotesEvent;
  */
 
 public class GetNotesModel {
+    @SerializedName("id_users")
+    String idUsers;
     @SerializedName("id_notes")
     String idNotes;
 
     public GetNotesModel(GetNotesEvent event) {
+        this.idUsers = event.getIdUsers();
         this.idNotes = event.getIdNotes();
     }
 
     public String getIdNotes() {
         return idNotes;
+    }
+
+    public String getIdUsers() {
+        return idUsers;
+    }
+
+    public void setIdUsers(String idUsers) {
+        this.idUsers = idUsers;
     }
 
     public void setIdNotes(String idNotes) {

@@ -27,5 +27,5 @@ public interface INotes {
 
     @Multipart
     @POST("/getDetail.php")
-    void getDetail(@Part("id_notes") String idNotes, Callback<GetNotesResultModel> callback);
+    void getDetail(@Part("id_users") String idUsers, @Part("id_notes") String idNotes, Callback<GetNotesResultModel> callback);
 }

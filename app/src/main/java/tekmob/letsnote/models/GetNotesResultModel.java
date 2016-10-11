@@ -21,6 +21,8 @@ public class GetNotesResultModel {
     String price;
     @SerializedName("photo_link")
     String photoLink;
+    @SerializedName("coin_balance")
+    String coinBalance;
 
     public String getIdNotes() {
         return idNotes;
@@ -46,6 +48,10 @@ public class GetNotesResultModel {
         return photoLink;
     }
 
+    public String getCoinBalance() {
+        return coinBalance;
+    }
+
     public void setIdNotes(String idNotes) {
         this.idNotes = idNotes;
     }
@@ -68,5 +74,9 @@ public class GetNotesResultModel {
 
     public void setPhotoLink(String photoLink) {
         this.photoLink = photoLink;
+    }
+
+    public void setCoinBalance(String coinBalance) {
+        this.coinBalance = coinBalance;
     }
 }

@@ -24,6 +24,8 @@ public class NotesDetailActivity extends BaseActivity {
     TextView notesPrice;
     @Bind(R.id.notes_link)
     TextView notesLink;
+    @Bind(R.id.notes_usercoin)
+    TextView notesUsercoin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,8 @@ public class NotesDetailActivity extends BaseActivity {
 
     @OnClick(R.id.button_detail)
     public void buttonDetail(){
-        eventBus.post(new GetNotesEvent("4"));
+        Log.d("button pressed", "get detail notes");
+        eventBus.post(new GetNotesEvent("3", "4"));
     }
 
     public void onEvent(GetNotesResultEvent event) {
@@ -45,6 +48,7 @@ public class NotesDetailActivity extends BaseActivity {
             notesDescription.setText(model.getDescription());
             notesPrice.setText(model.getPrice());
             notesLink.setText(model.getPhotoLink());
+            notesUsercoin.setText(model.getCoinBalance());
         }
         else {
             Toast.makeText(this, "get failed", Toast.LENGTH_SHORT).show();

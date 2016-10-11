@@ -26,6 +26,6 @@ public class NotesService {
     public static void getNotes(GetNotesModel getNotesModel, Callback<GetNotesResultModel> callback, Context context) {
         Log.d("on service", "getnotes");
         INotes notes = LNClient.getClient().getRestAdapter().create(INotes.class);
-        notes.getDetail(getNotesModel.getIdNotes(), callback);
+        notes.getDetail(getNotesModel.getIdUsers(), getNotesModel.getIdNotes(), callback);
     }
 }
