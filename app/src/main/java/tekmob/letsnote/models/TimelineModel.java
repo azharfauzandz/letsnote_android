@@ -7,7 +7,7 @@ import tekmob.letsnote.events.CreateNoteEvent;
 /**
  * Created by feaza on 10/2/2016.
  */
-public class NotesModel {
+public class TimelineModel {
     @SerializedName("image")
     String image;
     @SerializedName("name")
@@ -21,12 +21,12 @@ public class NotesModel {
     double price;
     String photoLink;
 
-    public NotesModel(CreateNoteEvent event) {
+    public TimelineModel(CreateNoteEvent event) {
         this.image = event.getImage();
         this.name = event.getName();
     }
 
-    public NotesModel(int id_notes,int id_users, String owner, String title, String description, int price, String photoLink){
+    public TimelineModel(int id_notes,int id_users, String owner, String title, String description, int price, String photoLink){
         this.id_notes=id_notes;
         this.id_users=id_users;
         this.owner=owner;
@@ -35,6 +35,8 @@ public class NotesModel {
         this.price=price;
         this.photoLink=photoLink;
     }
+
+
 
     public int getId_notes() {
         return id_notes;
