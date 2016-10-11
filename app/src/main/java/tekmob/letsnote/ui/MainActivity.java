@@ -194,10 +194,9 @@ public class MainActivity extends BaseActivity {
                 MyNotesFragment myNotesFragment = new MyNotesFragment();
                 return myNotesFragment;
             case 2:
+                //Settings
                 TimelineFragment timelineFragment2 = new TimelineFragment();
                 return timelineFragment2;
-//                // settings
-//
             default:
                 return new TimelineFragment();
         }
@@ -234,17 +233,13 @@ public class MainActivity extends BaseActivity {
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_SETTINGS;
                         break;
-
+                    case  R.id.nav_logout:
+                        session.logoutUser();
+                        break;
                     case R.id.nav_about_us:
-                        // launch new intent instead of loading fragment
-//                        startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-//                        drawer.closeDrawers();
-//                        return true;
+
                     case R.id.nav_faq:
-//                        // launch new intent instead of loading fragment
-//                        startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
-//                        drawer.closeDrawers();
-//                        return true;
+
                     default:
                         navItemIndex = 0;
                 }
@@ -319,10 +314,6 @@ public class MainActivity extends BaseActivity {
             getMenuInflater().inflate(R.menu.main, menu);
         }
 
-//        // when fragment is notifications, load the menu created for notifications
-//        if (navItemIndex == 3) {
-//            getMenuInflater().inflate(R.menu.notifications, menu);
-//        }
         return true;
     }
 
@@ -338,19 +329,6 @@ public class MainActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
             return true;
         }
-
-        // user is in notifications fragment
-        // and selected 'Mark all as Read'
-        if (id == R.id.action_mark_all_read) {
-            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
-        }
-
-        // user is in notifications fragment
-        // and selected 'Clear All'
-        if (id == R.id.action_clear_notifications) {
-            Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
