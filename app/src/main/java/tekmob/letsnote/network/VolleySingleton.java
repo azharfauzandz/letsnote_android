@@ -7,6 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+import tekmob.letsnote.LNApplication;
 import tekmob.letsnote.utils.MyApplication;
 
 /**
@@ -17,7 +18,7 @@ public class VolleySingleton {
     private RequestQueue mRequestQueue;
     private ImageLoader imageLoader;
     private VolleySingleton(){
-        mRequestQueue= Volley.newRequestQueue(MyApplication.getAppContext());
+        mRequestQueue= Volley.newRequestQueue(LNApplication.getAppContext());
         imageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
             private LruCache<String,Bitmap> cache=new LruCache<>((int)(Runtime.getRuntime().maxMemory()/2048)/8);
             @Override

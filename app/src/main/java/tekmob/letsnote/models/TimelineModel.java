@@ -21,10 +21,10 @@ public class TimelineModel {
     double price;
     String photoLink;
 
-    public TimelineModel(CreateNoteEvent event) {
-        this.image = event.getImage();
-        this.name = event.getName();
-    }
+//    public TimelineModel(CreateNoteEvent event) {
+//        this.image = event.getImage();
+//        this.name = event.getName();
+//    }
 
     public TimelineModel(int id_notes,int id_users, String owner, String title, String description, int price, String photoLink){
         this.id_notes=id_notes;

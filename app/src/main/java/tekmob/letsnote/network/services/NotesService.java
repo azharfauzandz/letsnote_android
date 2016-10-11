@@ -20,7 +20,7 @@ public class NotesService {
     public static void createNotes(NotesModel notesModel, Callback<ResponseModel> callback, Context context) {
         Log.d("on service", "createnotes");
         INotes notes = LNClient.getClient().getRestAdapter().create(INotes.class);
-        notes.postNotes(notesModel.getIdUsers(), notesModel.getTitle(), notesModel.getDescription(), notesModel.getPrice(), notesModel.getImage(), callback);
+        notes.postNotes(notesModel.getIdUsers(), notesModel.getTitle(), notesModel.getDescription(), notesModel.getPriceString(), notesModel.getImage(), callback);
     }
 
     public static void getNotes(GetNotesModel getNotesModel, Callback<GetNotesResultModel> callback, Context context) {

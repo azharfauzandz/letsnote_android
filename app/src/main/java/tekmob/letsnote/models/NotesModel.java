@@ -15,15 +15,13 @@ public class NotesModel {
     @SerializedName("description")
     String description;
     @SerializedName("price")
-    String price;
+    String priceString;
     @SerializedName("image")
     String image;
 
     int id_notes;
     int id_users;
     String owner;
-    String title;
-    String description;
     double price;
     String photoLink;
 
@@ -31,7 +29,7 @@ public class NotesModel {
         this.idUsers = event.getIdUsers();
         this.title = event.getTitle();
         this.description = event.getDescription();
-        this.price = event.getPrice();
+        this.priceString = event.getPrice();
         this.image = event.getImage();
     }
 
@@ -47,8 +45,8 @@ public class NotesModel {
         return description;
     }
 
-    public String getPrice() {
-        return price;
+    public String getPriceString() {
+        return priceString;
     }
 
     public NotesModel(int id_notes,int id_users, String owner, String title, String description, int price, String photoLink){
@@ -85,22 +83,6 @@ public class NotesModel {
         this.owner = owner;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -133,8 +115,8 @@ public class NotesModel {
         this.description = description;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setPriceString(String price) {
+        this.priceString = price;
     }
 
     public void setImage(String image) {
