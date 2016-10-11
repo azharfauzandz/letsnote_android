@@ -19,7 +19,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("activity","main activity");
         ButterKnife.bind(this);
+
     }
 
     @OnClick(R.id.button)
@@ -31,6 +33,12 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.button_2)
     public void buttonClick2() {
         Intent intent = new Intent(this, NotesDetailActivity.class);
+        startActivity(intent);
+    }
+    
+    @OnClick(R.id.timeline_button)
+    public void buttonClickTimeline(){
+        Intent intent = new Intent(this, Timeline.class);
         startActivity(intent);
     }
 

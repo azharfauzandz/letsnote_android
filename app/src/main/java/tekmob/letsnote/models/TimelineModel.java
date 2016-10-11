@@ -7,17 +7,11 @@ import tekmob.letsnote.events.CreateNoteEvent;
 /**
  * Created by feaza on 10/2/2016.
  */
-public class NotesModel {
-    @SerializedName("id_users")
-    String idUsers;
-    @SerializedName("title")
-    String title;
-    @SerializedName("description")
-    String description;
-    @SerializedName("price")
-    String price;
+public class TimelineModel {
     @SerializedName("image")
     String image;
+    @SerializedName("name")
+    String name;
 
     int id_notes;
     int id_users;
@@ -27,31 +21,12 @@ public class NotesModel {
     double price;
     String photoLink;
 
-    public NotesModel(CreateNoteEvent event) {
-        this.idUsers = event.getIdUsers();
-        this.title = event.getTitle();
-        this.description = event.getDescription();
-        this.price = event.getPrice();
+    public TimelineModel(CreateNoteEvent event) {
         this.image = event.getImage();
+        this.name = event.getName();
     }
 
-    public String getIdUsers() {
-        return idUsers;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public NotesModel(int id_notes,int id_users, String owner, String title, String description, int price, String photoLink){
+    public TimelineModel(int id_notes,int id_users, String owner, String title, String description, int price, String photoLink){
         this.id_notes=id_notes;
         this.id_users=id_users;
         this.owner=owner;
@@ -60,6 +35,8 @@ public class NotesModel {
         this.price=price;
         this.photoLink=photoLink;
     }
+
+
 
     public int getId_notes() {
         return id_notes;
@@ -121,24 +98,15 @@ public class NotesModel {
         return image;
     }
 
-    public void setIdUsers(String idUsers) {
-        this.idUsers = idUsers;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public String getName() {
+        return name;
     }
 
     public void setImage(String image) {
         this.image = image;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }
