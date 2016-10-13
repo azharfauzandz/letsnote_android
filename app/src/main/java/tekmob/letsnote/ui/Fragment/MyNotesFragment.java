@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 
 import tekmob.letsnote.R;
 
-
+/**
+ * Created by azhardz on 10/11/16.
+ */
 public class MyNotesFragment extends Fragment {
 
     public MyNotesFragment() {

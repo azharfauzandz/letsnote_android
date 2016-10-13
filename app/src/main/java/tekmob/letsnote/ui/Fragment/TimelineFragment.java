@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tekmob.letsnote.R;
-
+/**
+ * Created by azhardz on 10/11/16.
+ */
 public class TimelineFragment extends Fragment {
     public TimelineFragment() {
         // Required empty public constructor

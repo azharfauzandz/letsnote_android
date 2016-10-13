@@ -26,7 +26,9 @@ import tekmob.letsnote.events.GetDummyResultEvent;
 import tekmob.letsnote.helper.LNSession;
 import tekmob.letsnote.ui.Fragment.MyNotesFragment;
 import tekmob.letsnote.ui.Fragment.TimelineFragment;
-
+/**
+ * Created by azhardz on 10/2/16.
+ */
 public class MainActivity extends BaseActivity {
 
     private View navHeader;
