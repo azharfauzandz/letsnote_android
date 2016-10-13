@@ -122,12 +122,12 @@ public class MainActivity extends BaseActivity {
      * name, website, notifications action view (dot)
      */
     private void loadNavHeader() {
-        // name, website
-        txtName.setText("Azhar Fauzan");
-        txtEmail.setText("azhar@gmail.com");
+        // name, email
+        txtName.setText(session.getUserName());
+        txtEmail.setText(session.getUserEmail());
 
         // showing dot next to notifications label
-        navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
+        // navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
     }
 
     /***
@@ -326,7 +326,7 @@ public class MainActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+            session.logoutUser();
             return true;
         }
         return super.onOptionsItemSelected(item);

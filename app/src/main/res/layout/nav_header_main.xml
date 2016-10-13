@@ -9,26 +9,19 @@
     android:background="@drawable/unnamed_bg"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/img_header_bg"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:src="@mipmap/ic_header_bg" />-->
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginLeft="@dimen/fab_margin"
         android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
             android:id="@+id/img_profile"
             android:layout_width="@dimen/profile_width"
             android:layout_height="@dimen/profile_height"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+
             app:srcCompat="@android:drawable/sym_def_app_icon" />
 
         <TextView
@@ -38,14 +31,14 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:layout_marginBottom="4dp"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/email"
             android:text="[EMAIL IN HERE]"
             android:gravity="left"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
