@@ -11,9 +11,9 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
-        android:name=".LNApplication"
+        android:name=".app.LNApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher_ln"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -26,8 +26,11 @@
         </activity>
         <activity android:name=".ui.CreateNoteActivity" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.NotesDetailActivity"></activity>
-        <activity android:name=".ui.Timeline"></activity>
+        <activity android:name=".ui.NotesDetailActivity" />
+        <activity android:name=".ui.Timeline" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.AboutUsActivity" />
+        <activity android:name=".ui.FAQActivity" />
     </application>
 
 </manifest>
