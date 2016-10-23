@@ -2,6 +2,7 @@ package tekmob.letsnote.ui.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,11 +32,12 @@ import tekmob.letsnote.R;
 import tekmob.letsnote.adapter.TimelineRVAdapter;
 import tekmob.letsnote.models.TimelineModel;
 import tekmob.letsnote.network.VolleySingleton;
+import tekmob.letsnote.ui.NotesDetailActivity;
 
 /**
  * Created by azhardz on 10/11/16.
  */
-public class TimelineFragment extends Fragment {
+public class TimelineFragment extends Fragment implements TimelineRVAdapter.ClassListener {
     public static final String JSON_URL = "http://ec2-52-207-209-250.compute-1.amazonaws.com/letsnote/getTimeline.php";
     private List<TimelineModel> notes;
     private RecyclerView rv;
@@ -139,7 +141,14 @@ public class TimelineFragment extends Fragment {
 
     private void initializeAdapter(){
         TimelineRVAdapter adapter = new TimelineRVAdapter(notes);
+        adapter.setListener(this);
         rv.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(int pos) {
+        Intent intent = new Intent(getContext(), NotesDetailActivity.class);
+        startActivity(intent);
     }
 
 }

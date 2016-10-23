@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -20,6 +21,7 @@ import tekmob.letsnote.R;
 import tekmob.letsnote.models.NotesModel;
 import tekmob.letsnote.models.TimelineModel;
 import tekmob.letsnote.network.VolleySingleton;
+import tekmob.letsnote.ui.Fragment.TimelineFragment;
 
 /**
  * Created by dananarief on 08-10-16.
@@ -28,6 +30,7 @@ public class TimelineRVAdapter extends RecyclerView.Adapter<TimelineRVAdapter.No
     List<TimelineModel> notes;
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
+    private ClassListener listener;
     public static class NoteViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
@@ -51,6 +54,10 @@ public class TimelineRVAdapter extends RecyclerView.Adapter<TimelineRVAdapter.No
         imageLoader=volleySingleton.getImageLoader();
     }
 
+    public void setListener(ClassListener listener){
+        this.listener = listener;
+    }
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -59,6 +66,12 @@ public class TimelineRVAdapter extends RecyclerView.Adapter<TimelineRVAdapter.No
     @Override
     public NoteViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_cardview_timeline, viewGroup, false);
+//        v.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.d("clicked", "rv");
+//            }
+//        });
         NoteViewHolder pvh = new NoteViewHolder(v);
         return pvh;
     }
@@ -67,7 +80,6 @@ public class TimelineRVAdapter extends RecyclerView.Adapter<TimelineRVAdapter.No
     public void onBindViewHolder(final NoteViewHolder noteViewHolder, int i) {
         noteViewHolder.title.setText(notes.get(i).getTitle());
         noteViewHolder.personName.setText(notes.get(i).getOwner());
-
         String url=notes.get(i).getPhotoLink();
         //String url="http://mahasiswa.cs.ui.ac.id/~danan.arief/icon texteditor.png";
 
@@ -89,7 +101,21 @@ public class TimelineRVAdapter extends RecyclerView.Adapter<TimelineRVAdapter.No
 
 
             });
+            Log.d("set ocl","setting");
+            noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        listener.onItemClick(noteViewHolder.getAdapterPosition());
+                        Log.d("onclick", "idk");
+                    }
+                }
+            });
         }
+    }
+
+    public interface ClassListener {
+        void onItemClick(int pos);
     }
 
     @Override
