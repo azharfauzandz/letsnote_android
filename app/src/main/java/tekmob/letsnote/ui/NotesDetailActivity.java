@@ -10,9 +10,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tekmob.letsnote.R;
+import tekmob.letsnote.app.LNApplication;
 import tekmob.letsnote.events.GetDummyResultEvent;
 import tekmob.letsnote.events.GetNotesEvent;
 import tekmob.letsnote.events.GetNotesResultEvent;
+import tekmob.letsnote.helper.LNSession;
 import tekmob.letsnote.models.GetNotesResultModel;
 
 public class NotesDetailActivity extends BaseActivity {
@@ -32,16 +34,16 @@ public class NotesDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_detail);
         ButterKnife.bind(this);
-    }
-
-    @OnClick(R.id.button_detail)
-    public void buttonDetail(){
-        Log.d("button pressed", "get detail notes");
-        eventBus.post(new GetNotesEvent("3", "4"));
+        LNSession session = new LNSession(getApplicationContext());
+        String idNotes = getIntent().getStringExtra("NOTES_ID");
+        String idUser = session.getUserId();
+        eventBus.post(new GetNotesEvent(idUser, idNotes));
+        showDialog();
     }
 
     public void onEvent(GetNotesResultEvent event) {
         Log.d("event", "get notes result");
+        hideDialog();
         if(event.getStatus() == event.OK) {
             GetNotesResultModel model = event.getGetNotesResultModel();
             notesTitle.setText(model.getTitle());

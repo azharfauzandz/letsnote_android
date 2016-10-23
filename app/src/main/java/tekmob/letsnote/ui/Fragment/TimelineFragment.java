@@ -148,6 +148,7 @@ public class TimelineFragment extends Fragment implements TimelineRVAdapter.Clas
     @Override
     public void onItemClick(int pos) {
         Intent intent = new Intent(getContext(), NotesDetailActivity.class);
+        intent.putExtra("NOTES_ID", "" + notes.get(pos).getId_notes());
         startActivity(intent);
     }
 
