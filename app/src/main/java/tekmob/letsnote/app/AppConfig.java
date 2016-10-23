@@ -17,4 +17,7 @@ public class AppConfig {
     //Register
     public static String URL_CREATE_NOTES = URL_BASE + "/create_notes.php";
 
+    //timeline
+    public static String URL_TIMELINE = URL_BASE + "/getTimeline.php";
+
 }

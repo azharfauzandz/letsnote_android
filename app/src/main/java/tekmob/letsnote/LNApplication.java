@@ -6,6 +6,7 @@ import android.content.Context;
 import de.greenrobot.event.EventBus;
 import tekmob.letsnote.managers.DummyManager;
 import tekmob.letsnote.managers.NotesManager;
+import tekmob.letsnote.utils.MyApplication;
 
 /**
  * Created by feaza on 9/21/2016.
@@ -16,6 +17,7 @@ public class LNApplication extends Application {
     private NotesManager notesManager;
     private EventBus eventBus = EventBus.getDefault();
     private static LNApplication sInstance;
+
 
     @Override
     public void onCreate() {

@@ -7,14 +7,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-import tekmob.letsnote.LNApplication;
+//import tekmob.letsnote.LNApplication;
+import tekmob.letsnote.app.LNApplication;
 import tekmob.letsnote.utils.MyApplication;
 
 /**
  * Created by dananarief on 09-10-16.
  */
 public class VolleySingleton {
-    private static VolleySingleton sInstance=null;
+    private static VolleySingleton mInstance=null;
     private RequestQueue mRequestQueue;
     private ImageLoader imageLoader;
     private VolleySingleton(){
@@ -36,11 +37,11 @@ public class VolleySingleton {
     }
 
     public static VolleySingleton getsInstance(){
-        if(sInstance==null){
-            sInstance = new VolleySingleton();
+        if(mInstance==null){
+            mInstance = new VolleySingleton();
         }
 
-        return sInstance;
+        return mInstance;
     }
 
     public RequestQueue getRequestQueue(){

@@ -37,7 +37,7 @@ public class LNApplication extends Application {
 
         eventBus.register(dummyManager);
         eventBus.register(notesManager);
-
+        //sInstance=this;
         mInstance = this;
     }
 
@@ -50,7 +50,7 @@ public class LNApplication extends Application {
     }
 
     public static Context getAppContext(){
-        return sInstance.getApplicationContext();
+        return mInstance.getApplicationContext();
     }
 
     public RequestQueue getRequestQueue() {

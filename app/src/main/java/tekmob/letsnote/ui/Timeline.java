@@ -26,13 +26,13 @@ import java.util.List;
 
 import tekmob.letsnote.R;
 import tekmob.letsnote.adapter.TimelineRVAdapter;
+import tekmob.letsnote.app.AppConfig;
 import tekmob.letsnote.models.NotesModel;
 import tekmob.letsnote.models.TimelineModel;
 import tekmob.letsnote.network.VolleySingleton;
 
 public class Timeline extends AppCompatActivity {
 
-    public static final String JSON_URL = "http://ec2-52-207-209-250.compute-1.amazonaws.com/letsnote/getTimeline.php";
     private List<TimelineModel> notes;
     private RecyclerView rv;
     private String jsonResponse;
@@ -57,7 +57,7 @@ public class Timeline extends AppCompatActivity {
 
     private void sendRequestv(){
         RequestQueue requestQueue = VolleySingleton.getsInstance().getRequestQueue();
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET,JSON_URL,null,
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET,AppConfig.URL_TIMELINE,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
