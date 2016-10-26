@@ -97,12 +97,12 @@ public class MainActivity extends BaseActivity {
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
+        final Intent intent = new Intent(this, CreateNoteActivity.class);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(intent);
             }
         });
 

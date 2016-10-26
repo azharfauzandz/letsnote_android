@@ -1,38 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="tekmob.letsnote.ui.CreateNoteActivity">
-    <EditText
-        android:id="@+id/title"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="Title"/>
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="Description"/>
-    <EditText
-        android:id="@+id/price"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="Price"/>
-    <Button
-        android:id="@+id/image_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="image"/>
-    <Button
-        android:id="@+id/submit_notes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"/>
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+    <ScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="true">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Judul"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                app:hintEnabled="true"
+                app:counterEnabled="true"
+                app:counterMaxLength="120">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/support_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Deskripsi"
+                    android:gravity="top|left"
+                    android:textSize="16sp"
+                    android:lines="3"
+                    android:inputType="textMultiLine"
+                    android:maxLength="120" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description"
+                app:hintEnabled="true">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/price_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga (dalam koin)"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <Button
+                android:id="@+id/image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:text="Ubah Foto"/>
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/image_button"/>
+            <Button
+                android:id="@+id/submit_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_preview"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:text="Submit"/>
+        </RelativeLayout>
+    </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>
