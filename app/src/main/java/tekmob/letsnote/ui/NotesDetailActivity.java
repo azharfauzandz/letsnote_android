@@ -2,7 +2,10 @@ package tekmob.letsnote.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,13 +31,12 @@ public class NotesDetailActivity extends BaseActivity {
     @Bind(R.id.notes_description)
     TextView notesDescription;
     @Bind(R.id.notes_price)
-    TextView notesPrice;
-    @Bind(R.id.notes_link)
-    TextView notesLink;
-    @Bind(R.id.notes_usercoin)
-    TextView notesUsercoin;
+    Button notesPrice;
     @Bind(R.id.notes_image)
     ImageView notesImage;
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
@@ -44,6 +46,7 @@ public class NotesDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_detail);
         ButterKnife.bind(this);
+        initToolbar();
         volleySingleton=VolleySingleton.getsInstance();
         imageLoader=volleySingleton.getImageLoader();
         LNSession session = new LNSession(getApplicationContext());
@@ -53,16 +56,28 @@ public class NotesDetailActivity extends BaseActivity {
         showDialog();
     }
 
+    public void initToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Deskripsi");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_return_button);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void onEvent(GetNotesResultEvent event) {
         Log.d("event", "get notes result");
         hideDialog();
         if (event.getStatus() == event.OK) {
             GetNotesResultModel model = event.getGetNotesResultModel();
-            notesTitle.setText(model.getTitle());
-            notesDescription.setText(model.getDescription());
-            notesPrice.setText(model.getPrice());
-            notesLink.setText(model.getPhotoLink());
-            notesUsercoin.setText(model.getCoinBalance());
             if (model.getPhotoLink() != null) {
                 imageLoader.get(model.getPhotoLink(), new ImageLoader.ImageListener() {
 
@@ -81,6 +96,10 @@ public class NotesDetailActivity extends BaseActivity {
 
 
                 });
+            notesTitle.setText(model.getTitle());
+            notesDescription.setText(model.getDescription());
+            String notePrice = model.getPrice() + " Coins";
+            notesPrice.setText(notePrice);
             } else {
                 Toast.makeText(this, "get failed", Toast.LENGTH_SHORT).show();
             }
