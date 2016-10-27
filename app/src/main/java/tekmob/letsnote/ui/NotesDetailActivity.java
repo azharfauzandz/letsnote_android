@@ -34,7 +34,8 @@ public class NotesDetailActivity extends BaseActivity {
     Button notesPrice;
     @Bind(R.id.notes_image)
     ImageView notesImage;
-
+    @Bind(R.id.notes_owner)
+    TextView notesOwner;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
@@ -96,10 +97,12 @@ public class NotesDetailActivity extends BaseActivity {
 
 
                 });
-            notesTitle.setText(model.getTitle());
-            notesDescription.setText(model.getDescription());
-            String notePrice = model.getPrice() + " Coins";
-            notesPrice.setText(notePrice);
+                notesTitle.setText(model.getTitle());
+                notesDescription.setText(model.getDescription());
+                String notePrice = model.getPrice() + " Coins";
+                notesPrice.setText(notePrice);
+                String noteOwner = "By " + getIntent().getStringExtra("NOTES_AUTHOR");
+                notesOwner.setText(noteOwner);
             } else {
                 Toast.makeText(this, "get failed", Toast.LENGTH_SHORT).show();
             }

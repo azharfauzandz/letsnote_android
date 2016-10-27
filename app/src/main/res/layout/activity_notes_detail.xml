@@ -44,9 +44,15 @@
             android:layout_height="match_parent"
             android:layout_below="@id/image_layout">
             <TextView
+                android:id="@+id/notes_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"/>
+            <TextView
                 android:id="@+id/deskripsi_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/notes_owner"
                 android:text="Deskripsi"/>
             <TextView
                 android:id="@+id/notes_description"
